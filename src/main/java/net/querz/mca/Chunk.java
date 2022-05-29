@@ -36,7 +36,7 @@ public class Chunk implements Iterable<Section> {
 	private CompoundTag heightMaps;
 	private CompoundTag carvingMasks;
 	private Map<Integer, Section> sections = new TreeMap<>();
-	private ListTag<CompoundTag> entities;
+	private ListTag<CompoundTag> entities = new ListTag(10);
 	private ListTag<CompoundTag> tileEntities;
 	private ListTag<CompoundTag> tileTicks;
 	private ListTag<CompoundTag> liquidTicks;
@@ -475,9 +475,6 @@ public class Chunk implements Iterable<Section> {
 	 * @return The entities of this chunk.
 	 */
 	public ListTag<CompoundTag> getEntities() {
-		if  (entities == null) {
-			return new ListTag<CompoundTag>();
-		}
 		return entities;
 	}
 
