@@ -476,6 +476,10 @@ public class Chunk implements Iterable<Section> {
 	 */
 	public ListTag<CompoundTag> getEntities() {
 		if (entities == null) {
+			CompoundTag level;
+			if ((level = data.getCompoundTag("Level")) == null) {
+				throw new IllegalArgumentException("data does not contain \"Level\" tag");
+			}
 			ListTag<CompoundTag> entities = new ListTag<>(CompoundTag.class);
 			level.put("Entities", entities);
 		}
